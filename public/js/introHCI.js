@@ -27,4 +27,14 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+
+	$.get("http://localhost:3000/project/" + idNumber, callBackFn) // Put Heroku URL later
+}
+
+function callBackFn(result) {
+	//console.log(response.data);
+	console.log(result);
+	//$('#project' + result.id + '.details').html("<b>foo</b>");
+	$('#project' + result.id + ' .details').html('<a href="#" class="thumbnail">' +
+    '<img src="' + result['image'] + '" class="detailsImage">' + result['date'] + result.summary);
 }
